@@ -1,0 +1,104 @@
+﻿@model BigFootIT_App_Demo.Data.Entities.CustomerEntity
+@{
+    ViewData["Title"] = "Customer Details";
+    Layout = "~/Views/Shared/_DashBoardLayout.cshtml";
+}
+ <div class="col-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-light table-striped bordered" style="width:100%">
+                    <tbody>
+
+                        <tr>
+                            <td>Name</td>
+                            <td>@Model.CustomerName</td>
+                        </tr>
+
+                        <tr>
+                            <td>Address</td>
+                            <td>@Model.CustomerAddress</td>
+                        </tr>
+
+                         <tr>
+                            <td>Status</td>
+
+                            @if(Model.IsActive==true)
+                            {
+                                <td class="text-success" >Active</td>
+                            }else
+                            {           
+                                <td class="text-Warning" >Not Active</td>
+                            }
+                            
+                        </tr>
+                                          
+                    </tbody>                                    
+                </table>
+            </div>
+            <button type="button" class="btn btn-primary w-100" data-toggle="modal" data-target="#exampleModalpopover">Update</button>
+
+            <button type="button" class="btn btn-danger mt-2 w-100" data-toggle="modal" data-target="#deleteCustomer">Delete</button>
+        </div>
+     </div>
+</div>
+
+
+  <!--Modal to update customer-->
+<div class="modal fade" id="exampleModalpopover">
+     <form asp-action="Update_Customer" asp-controller="Dashboard">
+        <input type="hidden" name="id" value="@Model.Id"/>
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Update</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label><strong>Name</strong></label>
+                        <input type="text" name="name" required class="form-control" value="@Model.CustomerName">
+                    </div>
+
+                    <div class="form-group">
+                        <label><strong>Address</strong></label>
+                        <textarea  name="address" required class="form-control">@Model.CustomerAddress</textarea>
+                    </div>          
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+     </form>
+</div>
+
+  <!--Modal to delete customer-->
+<div class="modal fade" id="deleteCustomer">
+     <form asp-action="Delete_Customer" asp-controller="Dashboard">
+        <input type="hidden" name="id" value="@Model.Id"/>
+        <div class="modal-dialog modal-dialog-centered" role="document">
+      
+            <div class="modal-content">
+                <br/>
+                <br/>
+                 <br/>
+                <br/>
+
+                <h4 class="text-center text-danger">Are you sure you want to delete @Model.CustomerName ?</h4>
+
+                <br/>
+                 <br/>
+                <br/>
+                <button type="button" class="btn btn-secondary w-75 mx-auto" data-dismiss="modal">No, Cancel</button>
+                <button type="submit" class="btn btn-danger w-75 mt-2 mb-2 mx-auto" >Yes</button>
+                 <br/>
+                <br/>
+                <br/>
+
+            </div>
+        </div>
+     </form>
+</div>

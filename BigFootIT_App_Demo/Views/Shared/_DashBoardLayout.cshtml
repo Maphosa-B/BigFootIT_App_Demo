@@ -1,0 +1,214 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>@ViewData["title"]</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Dashboard_Files/images/favicon.png">
+    <link rel="stylesheet" href="~/Dashboard_Files/vendor/owl-carousel/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Dashboard_Files/vendor/owl-carousel/css/owl.theme.default.min.css">
+    <link href="~/Dashboard_Files/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
+    <link href="~/Dashboard_Files/css/style.css" rel="stylesheet">
+        <link href="~/Dashboard_Files/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+
+
+
+</head>
+
+<body>
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <div class="nav-header">
+            <a href="~/Dashboard/Index" class="brand-logo">
+                DEMO
+            </a>
+
+            <div class="nav-control">
+                <div class="hamburger">
+                    <span class="line"></span><span class="line"></span><span class="line"></span>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Nav header end
+        ***********************************-->
+
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <div class="header">
+            <div class="header-content">
+                <nav class="navbar navbar-expand">
+                    <div class="collapse navbar-collapse justify-content-between">
+                        <div class="header-left">
+                        </div>
+                  
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div class="quixnav">
+            <div class="quixnav-scroll">
+                <ul class="metismenu" id="menu">
+                    <li class="nav-label first">Menu</li>
+                    <li><a href="~/Dashboard/Customers" aria-expanded="false"><i class="icon icon-single-04"></i><span class="nav-text">Customers</span></a></li>
+                    <li><a href="widget-basic.html" aria-expanded="false"><i class="icon icon-form"></i><span class="nav-text">Interactions</span></a></li>
+                    <li><a href="widget-basic.html" aria-expanded="false""><i class="icon icon-single-copy-06"></i><span class="nav-text">Summery</span></a></li>
+                </ul>
+            </div>
+
+
+        </div>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <!-- row -->
+            <div class="container-fluid">
+                <div class="row">
+
+                    @if(TempData["status"]!=null)
+                    {
+                        if(String.IsNullOrEmpty(TempData["status"].ToString())==false)
+                        {
+                            <div class="alert alert-success alert-dismissible alert-alt fade w-100 mx-3 show">
+                                <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
+                                </button>
+                                @TempData["status"].ToString()
+                            </div>
+                        }
+                    }
+
+                    
+                    @if(TempData["error"]!=null)
+                    {
+                        if(String.IsNullOrEmpty(TempData["error"].ToString())==false)
+                        {
+                            <div class="alert alert-danger alert-dismissible alert-alt fade w-100 mx-3 show">
+                                <button type="button" class="close h-100" data-dismiss="alert" aria-label="Close"><span><i class="mdi mdi-close"></i></span>
+                                </button>
+                                 @TempData["error"].ToString()
+                            </div>
+                        }
+                    }
+
+
+
+                    @RenderBody()  
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">Quixkit</a> 2019</p>
+                <p>Distributed by <a href="https://themewagon.com/" target="_blank">Themewagon</a></p> 
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+        <!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+    <script src="~/Dashboard_Files/vendor/global/global.min.js"></script>
+    <script src="~/Dashboard_Files/js/quixnav-init.js"></script>
+    <script src="~/Dashboard_Files/js/custom.min.js"></script>
+
+
+    <!-- Vectormap -->
+    <script src="~/Dashboard_Files/vendor/raphael/raphael.min.js"></script>
+    <script src="~/Dashboard_Files/vendor/morris/morris.min.js"></script>
+
+
+    <script src="~/Dashboard_Files/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="~/Dashboard_Files/vendor/chart.js/Chart.bundle.min.js"></script>
+
+    <script src="~/Dashboard_Files/vendor/gaugeJS/dist/gauge.min.js"></script>
+
+    <!--  flot-chart js -->
+    <script src="~/Dashboard_Files/vendor/flot/jquery.flot.js"></script>
+    <script src="~/Dashboard_Files/vendor/flot/jquery.flot.resize.js"></script>
+
+    <!-- Owl Carousel -->
+    <script src="~/Dashboard_Files/vendor/owl-carousel/js/owl.carousel.min.js"></script>
+
+    <!-- Counter Up -->
+    <script src="~/Dashboard_Files/vendor/jqvmap/js/jquery.vmap.min.js"></script>
+    <script src="~/Dashboard_Files/vendor/jqvmap/js/jquery.vmap.usa.js"></script>
+    <script src="~/Dashboard_Files/vendor/jquery.counterup/jquery.counterup.min.js"></script>
+
+
+    <script src="~/Dashboard_Files/js/dashboard/dashboard-1.js"></script>
+     <script src="~Dashboard_Files/js/custom.min.js"></script>
+
+        <!-- Datatable -->
+    <script src="~/Dashboard_Files/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="~/Dashboard_Files/js/plugins-init/datatables.init.js"></script>
+
+</body>
+
+</html>
